@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const Note = require("./models/note");
 
-app.use(express.static("dist"));
+// app.use(express.static("dist"));
 
 const requestLogger = (request, response, next) => {
 	console.log("Method:", request.method);
