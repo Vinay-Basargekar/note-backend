@@ -1,10 +1,14 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const cors = require("cors");
+
+app.use(cors());
+app.use(express.json());
 
 const Note = require("./models/note");
 
-// app.use(express.static("dist"));
+app.use(express.static("dist"));
 
 const requestLogger = (request, response, next) => {
 	console.log("Method:", request.method);
@@ -26,10 +30,6 @@ const errorHandler = (error, request, response, next) => {
 	next(error);
 };
 
-const cors = require("cors");
-
-app.use(cors());
-app.use(express.json());
 app.use(requestLogger);
 
 const unknownEndpoint = (request, response) => {
